@@ -1,0 +1,34 @@
+﻿Factory Method Pattern
+
+Bu yaratıcı desen, herhangi bir uygulamanın hedeflediği yeniden kullanılabilir, 
+bakımı yapılabilinir ve test edilebilinir bir mimari oluşturmanıza yardımcı olacaktır. 
+Bu desenin açıklamanın en basit yolu, gerçek hayattaki fabriklardır. 
+Bir fabrikanın amacı bir ürünü üretmektir. Örneğin telefon üreten bir fabrika düşünün tek bir amacı vardır 
+telefon üretmek ve tüketici bu konu ile ilgilenmezler 
+yani telefonun nasıl üretildiği ile ilgilenmezler, 
+tek ilgilendikleri konu telefonu kullanamaktır. 
+Yani bitmiş ürün ile ilgilenirler. Telefon üreten bir fabrikaya sahip olmanın artısı, 
+o fabrikada üretilen telefonların birden fazla müşteri tarafından kullanılmasıdır 
+ve unutmayın müşteri üretimi umursamaz yada bilmez.
+
+Yukarıda ki paragraftan yola çıkarak bu desen ile ilgili şu yargıya ulaşabiliriz 
+nesneyi bekleyen istemci (client) sınıflarımızı yaratımda (creation) kullanılan sınıflarda ayırırız, 
+bu desenin doğasında yani mimarisinde bu vardır. Deseni, bu açıdan incelediğimizde ilk paragrafın ilk cümlesine 
+atıfta bulunabiliriz yani business  için daha genişletilebilinir ve esnek bir çözüm sunmaktadır. 
+Örnğin bir e-ticaret uygulaması düşünelim, yeni bir kargo fiması tanıtmamız gerektiğini düşünelim, 
+alışveriş sepeti iş mantığının (business) uygulanış ayrıntılarını değiştrimek zorundan kalmadan 
+bunu bu desen aracılığıyla yapabiliriz. Çünkü alışveriş sepetinin yaratılışıyla, 
+kargo firmasının hiç bir alakası yoktur ve hatta tam olarak hangi nakliye sağlayıcısının kullanıldığıyla ilgilenilir. Sadece onaylaymış bitmiş bir sepet işinin siparişini göndermek istiyoruz.
+
+Yukarıdaki tanım ve örneklerden factory method desenin çok kullanışlı olacağını düşünebilirsiniz ki zaten 
+kuvvetli bir desendir. Zaten bu desenin amacı kodun yeniden kullanılmasına izin vermek ve genişletilebilrliği 
+arttırmak ve modifikasyonları rahat yapmaktır. Lakin bu desene çok sık başvurduğumuzda, 
+kullandığımız yapılarıda karmaşıklaştırmaya başlar. Bu yüzden dikkatli olmamız gerekmektedir.
+
+Factory , Factory method ve Abstract factory desenlerini birbirleriyle karıştırmayın 
+hepsinin kendisine has sunduğu çözüm önerileri vardır. Bazı kaynaklar factory ile factory methodu 
+bir düşünüp kullanmaktaıdr. Lakin Abstract factory desenini hep bilgi olarak şöyle düşünebilirsiniz, 
+abstract factory içerisnde birden fazla factory method barındırabilir ve business mantığıda ona göre dizayn 
+edilmektedir. Factory desinin değişik varyasyonlarında soyutlama kullanılmaktadır. 
+Kesinlikle şu şekilde düşünmeyiniz, factory method'ta soyutlama yoktur, abstract factory'de vardır.
+

@@ -1,0 +1,52 @@
+﻿
+
+Yapı açısından, singleton oldukça bassittir. 
+Bu, özel bir örnekleme ve bu örnekleme başvurmanın tek yolunu sağlayan genel 
+bir statik yöneteme sahip tek bir sınıftır. Ayrıca private bir constructor sahip olmaldır. 
+Çünkü nesnenin dışarıdan üretilmemesi prensibine dayanamaktadır. 
+Singleton deseninde esas amaç nesnenin her daim bir orneklemi oluşturulması ve 
+bu örnekleme üzerinden bütün işlemlerin yapılmasıdır. 
+Biraz daha açarsak nesnenin kullanım süresi boyunca sadece bir kez oluşturulması 
+ve bir daha olşturulmaması üzerine kurulu bir mantığı bulunmaktadır.
+
+Singleton modelinin doğası, onu uygulayan sınıfların bir uygulamanın ömrü boyunca herhangi 
+bir zamanda 0 veya 1 olmasıdır. Singleton sınıfları parametresiz oluşturulur. 
+Farklı parametrelere dayalı çeşitli benzer örneklere ihtiyacınız varsa, 
+muhtemelen factory design pattern kullanmanız daha doğrudur.
+
+Performans nedeniyle, singelton nesneler genellikle bir şey onalra talep edenece kadar 
+oluşturulmazlar. Bu layz instantition olarak bilinir ve bu kalıbın çoğu uygulaması 
+tarafından varsayılan davranıştır. Ancak, uygulama başladığında ihtiyacımız 
+olan örneği basitçe üretmek, oluşturmak ve ardından bu örneği uygulamanın 
+ömrü boyunca kullanmakda mümkündür. Singleton sınıflar tek, özel, 
+parametresiz bir constructor'a sahip olmalıdır.
+
+Singleton'a yapılan tek referans, singleton sınıfının karakteristik özelliği özel bir 
+statik alanda olmasıdır. Uygulamanın geri kalanı, sınıfın bu amaç için gösterdiği 
+genel bir statik yöntem aracılığıyla sınıfın örneklemine erişir ve onu kullanır.
+
+Singleton bir nesne örneğinde sadece bir kez üretilip, o nesnenin örnekleminin her zaman 
+çıkarılmasını önlemektir. Örneğin katmanlı mimaride katmanlar arasında iletişimi sağlayan 
+yani yapılacak işlmeleri taşıyan ve üzerinde değer tutmayan bir nesne düşüneli, 
+bu ilgili nesne singleton ile üretilebilinir. 
+
+
+
+Singleton ile üretilmiş nesnelerin kendisine has karakteristik bir yaşam döngüsü bulunmaktadır. Bu yüzden önümüz gelen nesneleri singleton ile üretmemeliyiz. Singleton üretilen nesneler statik sınfılar gibi RAM üzerinde yaşam alanları biriciktir. RAM'İn Heap alanında yaşarlar lakin projenin koştuğu server reset edilinceye kadar yaşarlar. Bu durum memory maliyeti olarka bize geri döner. Örenğin yıl sonunda çalışacak bir servisi singleton ile üretmemeliyiz. Çünkü bu servis sadece yıl sonunda bir kez kullanılacaktır. Bu senaryoda projenin canlıya alındığını ve yıl sonunda bu servise talep geldiği için singleton ile örneklemi oluşturulduğunu düşünelim, bu nesne artık RAM'den kaldırılmayacaltır taki server reset edilinceye kadar , diyelim ki reset edilmedi ilgili örneklem business gereği bir daha bir sonraki yıl çalışacaktır. 
+
+Singleton antipattern'dır. Bunun nedeni, uygulnadıkları bir arabirimi iletemek yerine 
+kodda doğrudan statik bir kullanıldıklarından sınıflar arasında tight couple bir ilişkiye 
+sebebiyet verirler. Private constructor ve statik yapıları yüzünden bağımlılık 
+enjeksiyonuna (DI) uygun değildirler. 
+Ayrıca, bu modeli takip eden sınıflar gerçek işlerinin yanı sıra örneklem yaşam 
+sürelerini yönetmekten sorumlu olacağından , 
+endişelerin ayrılması prensibine  (seperation of concerns) 
+ve tek sorumluluk ilkesine (SRP) ters düşmektedir. 
+
+Birden fazla singleton uygulayacaksanız, singleton davranışnı zorlamak için gereken 
+tüm mantığı çoğaltmamız gerekecek , bu aynı zamanda kendiniz tekrar etmeniz 
+(Don't Repeat Yourself) ilkesine de ihlal ettiğiniz anlamına gelir.
+
+
+
+
